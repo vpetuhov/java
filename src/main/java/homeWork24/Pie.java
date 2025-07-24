@@ -1,19 +1,19 @@
-package project;
+package homeWork24;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @ToString
 public class Pie extends Sweetness{
-    private String title;
-    private Integer weight;
-    private Integer price;
     private String topping;
+
+    public Pie(String title, Integer weight, Integer price, String topping){
+        super(title, weight, price);
+        this.topping = topping;
+    }
 
     @Override
     public String getUniqueParameter() {

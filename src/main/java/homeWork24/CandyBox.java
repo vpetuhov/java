@@ -1,4 +1,4 @@
-package project;
+package homeWork24;
 
 import lombok.*;
 
@@ -56,7 +56,6 @@ public class CandyBox implements СandyBoxManagement{
                 System.out.println("Удаление невозможно, нет сладости подходящего веса.");
                 break;
             } else if (requiredWeight > currentWeightBox) {
-                System.out.println("Удаление не требуется, вес коробки удовлетворят требованию.");
                 break;
             } else if (currentWeightBox > requiredWeight) {
                 currentWeightBox -= sweetnessList.get(i).getWeight();
@@ -94,13 +93,13 @@ public class CandyBox implements СandyBoxManagement{
         candyBox.addSweetness(caramel);
 
         System.out.println(String.format("Общий вес подарка %d грамм", candyBox.getWeightBox()));
-        System.out.println(String.format("Общая стоимость подарка %d рублей", candyBox.getPriceBox()));
+        System.out.println(String.format("Общая стоимость подарка %d рублей\n", candyBox.getPriceBox()));
         for(Sweetness sweetness : candyBox.sweetnessList){
             System.out.println(String.format("Название: %s, вес: %d, цена: %d, %s",
                     sweetness.getTitle(), sweetness.getWeight(), sweetness.getPrice(), sweetness.getUniqueParameter()));
         }
 
-        System.out.print("Введите '1' для оптимизации подарка по весу или '2' для оптимизации по цене: ");
+        System.out.print("\nВведите '1' для оптимизации подарка по весу или '2' для оптимизации по цене: ");
         int requiredType = scanner.nextInt();
         System.out.print("Введите максимальный вес коробки: ");
         int requiredVolume = scanner.nextInt();
@@ -108,7 +107,7 @@ public class CandyBox implements СandyBoxManagement{
         if (requiredType == 1) {candyBox.removeSweetWithMinWeight(requiredVolume);}
         else {candyBox.removeSweetWithMinPrice(requiredVolume);}
 
-        System.out.println(String.format("Вес подарка после оптимизации: %d грамм", candyBox.getWeightBox()));
+        System.out.println(String.format("\nВес подарка после оптимизации: %d грамм", candyBox.getWeightBox()));
         System.out.println(String.format("Цена подарка после оптимизации: %d рублей", candyBox.getPriceBox()));
     }
 }

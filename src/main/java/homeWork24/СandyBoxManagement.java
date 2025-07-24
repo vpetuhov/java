@@ -1,4 +1,4 @@
-package project;
+package homeWork24;
 
 public interface СandyBoxManagement {
     void addSweetness(Sweetness sweetness);
