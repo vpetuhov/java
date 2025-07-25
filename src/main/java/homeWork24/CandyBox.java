@@ -67,9 +67,9 @@ public class CandyBox implements СandyBoxManagement{
     public void removeSweetWithMinPrice(int requiredWeight){
         sweetnessList = sweetnessList.stream().sorted((s1, s2)-> Integer.compare(s1.getPrice(), s2.getPrice())).collect(Collectors.toList());
         Integer currentWeightBox = sweetnessList.stream().mapToInt(Sweetness::getWeight).sum();
-        Integer maxWeightSweet = sweetnessList.stream().mapToInt(Sweetness::getWeight).max().orElseThrow(() -> new IllegalStateException("Список пуст"));
+        Integer minWeightSweet = sweetnessList.stream().mapToInt(Sweetness::getWeight).min().orElseThrow(() -> new IllegalStateException("Список пуст"));
         for (int i = 0; i < sweetnessList.size(); i++) {
-            if (requiredWeight < maxWeightSweet){
+            if (requiredWeight < minWeightSweet){
                 System.out.println("Удаление невозможно, нет сладости подходящего веса.");
                 break;
             } else if (requiredWeight > currentWeightBox) {
