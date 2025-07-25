@@ -21,7 +21,8 @@ public class WordCounter {
         Map<String, Integer> wordFrequency = wordFrequency(words);
         System.out.println("\nЧастота слов в тексте: ");
         for (Map.Entry<String, Integer> entry : wordFrequency.entrySet()){
-            System.out.print(entry.getKey() + ": " + entry.getValue() + "\t");
+            System.out.print(entry.getKey() + ": " + entry.getValue() + " ");
+            System.out.print(Math.round((double) entry.getValue() / words.size() * 100 * 100) / 100.0 + "% \n");
         }
 
         System.out.println("\nСамые часто встречающиеся слова:");
@@ -44,7 +45,7 @@ public class WordCounter {
         try(BufferedReader br = new BufferedReader(new FileReader(filePath))){
             String line;
             while ((line = br.readLine()) != null){
-                Matcher matcher = wordPattern.matcher(line);
+                Matcher matcher = wordPattern.matcher(line.toLowerCase());
                 while (matcher.find()){
                     words.add(matcher.group());
                 }
@@ -52,7 +53,6 @@ public class WordCounter {
         } catch (IOException e){
             e.getMessage();
         }
-
         return words;
     }
 
